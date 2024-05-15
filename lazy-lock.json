@@ -1,0 +1,5 @@
+{
+  "lazy.nvim": { "branch": "main", "commit": "e44636a43376e8a1e851958f7e9cbe996751d59f" },
+  "rose-pine": { "branch": "main", "commit": "b6fe88c3282cf9f117a3e836d761c2d78d02f417" },
+  "tokyonight.nvim": { "branch": "main", "commit": "c91aef1125e052c9d862e68389e4185ec56f6cde" }
+}

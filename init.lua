@@ -1,7 +1,11 @@
 require("pskyconf")
 
 print("Hii from init.lua")
-print()
 
+prnt()
+print()
+print()
+print()
+print()
 print()
 print()

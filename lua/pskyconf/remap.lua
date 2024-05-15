@@ -50,3 +50,22 @@ end
 vim.keymap.set("n", "<leader>ra", ":lua ReplaceWord()<CR>", {noremap=true, silent=true})
 
 vim.keymap.set("v", "y", "+y")
+
+--function to replace x number of same words below current word
+function ReplaceBelow()
+    local current_word = vim.fn.expand("<cword>")
+    local new_word = vim.fn.input("Replace " ..current_word.. " with: ")
+    local number = tonumber(vim.fn.input("Number of occurences to replace: "))
+    if new_word and #new_word > 0 and number then
+        current_word = vim.fn.escape(current_word, "\\")
+
+        for i=1, number do
+            local command = ".,$s/\\<" ..current_word.. "\\>/" ..new_word.. "/"
+            vim.cmd(command)
+        end
+    end
+end
+
+vim.keymap.set("n", "<leader>rb", ":lua ReplaceBelow()<CR>", {noremap=true, silent=true})
+
+
