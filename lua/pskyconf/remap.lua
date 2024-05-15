@@ -20,6 +20,14 @@ vim.api.nvim_set_keymap('v', 'm', 'j', opts)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+vim.keymap.set("n", "<leader>v", ":vsplit()<CR>", {noremap=true, silent=true})
+vim.keymap.set("n", "<leader>h", ":split()<CR>", {noremap=true, silent=true})
+
+vim.keymap.set("n", "<C-j>", "<C-w>h", opts)
+vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
+vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
+vim.keymap.set("n", "<C-m>", "<C-w>j", opts)
+
 --greatest keymap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 

@@ -35,7 +35,6 @@ return {
                     italic = false
                 },
             })
-
             vim.cmd("colorscheme rose-pine")
             ColorMyPencil()
         end
