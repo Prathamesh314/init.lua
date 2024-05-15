@@ -1,2 +1,3 @@
 require("pskyconf")
-print("Hii from init lua")
+
+print("Hii from init.lua")
