@@ -6,6 +6,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 local opts = { noremap = true, silent = true}
 
+
 vim.api.nvim_set_keymap('n', 'j', 'h', opts)
 vim.api.nvim_set_keymap('n', 'k', 'k', opts)
 vim.api.nvim_set_keymap('n', 'l', 'l', opts)
@@ -57,7 +58,6 @@ end
 
 vim.keymap.set("n", "<leader>ra", ":lua ReplaceWord()<CR>", {noremap=true, silent=true})
 
-vim.keymap.set("v", "y", "+y")
 
 --function to replace x number of same words below current word
 function ReplaceBelow()
@@ -75,5 +75,5 @@ function ReplaceBelow()
 end
 
 vim.keymap.set("n", "<leader>rb", ":lua ReplaceBelow()<CR>", {noremap=true, silent=true})
-
-
+-- Define a mapping for opening a terminal
+vim.api.nvim_set_keymap('n', '<leader>T', ':terminal<CR>', {noremap = true})
