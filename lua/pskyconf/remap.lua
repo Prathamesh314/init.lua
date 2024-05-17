@@ -67,7 +67,7 @@ function ReplaceBelow()
     if new_word and #new_word > 0 and number then
         current_word = vim.fn.escape(current_word, "\\")
 
-        for i=1, number do
+        for _=1, number do
             local command = ".,$s/\\<" ..current_word.. "\\>/" ..new_word.. "/"
             vim.cmd(command)
         end
