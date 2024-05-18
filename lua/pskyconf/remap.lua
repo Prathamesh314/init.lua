@@ -28,6 +28,10 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 vim.keymap.set("n", "<C-m>", "<C-w>j", opts)
 
+--cellular animation
+vim.keymap.set("n", "<leader>cr", "<cmd>CellularAutomaton make_it_rain<CR>")
+vim.keymap.set("n", "<leader>cg", "<cmd>CellularAutomaton game_of_life<CR>")
+
 --greatest keymap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
