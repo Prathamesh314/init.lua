@@ -17,7 +17,6 @@ vim.api.nvim_set_keymap('v', 'k', 'k', opts)
 vim.api.nvim_set_keymap('v', 'l', 'l', opts)
 vim.api.nvim_set_keymap('v', 'm', 'j', opts)
 
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -78,15 +77,4 @@ vim.keymap.set("n", "<leader>rb", ":lua ReplaceBelow()<CR>", {noremap=true, sile
 -- Define a mapping for opening a terminal
 vim.api.nvim_set_keymap('n', '<leader>T', ':terminal<CR>', {noremap = true})
 
--- Define a function to comment the current word
-function CommentCurrentWord()
-    vim.api.nvim_command('normal! ^')  -- Move to the beginning of the word
-    vim.api.nvim_command('normal! v')  -- Enter visual mode
-    vim.api.nvim_command('normal! e')  -- Move to the end of the word
-    vim.api.nvim_command('silent! CommentToggle') -- Comment the selected text
-end
 
-
--- Define mappings for commenting current word and selected block
-vim.api.nvim_set_keymap('n', 'gc', '<cmd>lua CommentCurrentWord()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('x', 'gcc', ':CommentToggle<CR>', {noremap = true, silent = true})
