@@ -57,4 +57,4 @@ autocmd('LspAttach', {
 })
 
 
-print("Hello from psyk conf")
+print("You can press space+c+g to see magic in normal mode.")

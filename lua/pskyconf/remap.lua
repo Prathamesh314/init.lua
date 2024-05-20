@@ -23,6 +23,10 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>v", ":vsplit()<CR>", {noremap=true, silent=true})
 vim.keymap.set("n", "<leader>h", ":split()<CR>", {noremap=true, silent=true})
 
+vim.keymap.set("n", "<Esc>", "<Nop>", {silent=true, noremap=true})
+vim.keymap.set("i", "<Esc>", "<Nop>", {silent=true, noremap=true})
+
+
 vim.keymap.set("n", "<C-j>", "<C-w>h", opts)
 vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
