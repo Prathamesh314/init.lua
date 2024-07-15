@@ -32,6 +32,18 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 vim.keymap.set("n", "<C-m>", "<C-w>j", opts)
 
+-- Indent selected text with Tab
+vim.api.nvim_set_keymap('v', '<Tab>', '>gv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
+
+
+vim.api.nvim_set_keymap('i', '<Tab>', '<Tab>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<S-Tab>', '<C-d>', { noremap = true, silent = true })
+
+-- removes highlight on the word after searching 
+vim.api.nvim_set_keymap('n', '<Leader><Space>', ':nohlsearch<CR>', { noremap = true, silent = true })
+
+
 --cellular animation
 vim.keymap.set("n", "<leader>cr", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader>cg", "<cmd>CellularAutomaton game_of_life<CR>")
@@ -86,3 +98,32 @@ vim.keymap.set("n", "<leader>rb", ":lua ReplaceBelow()<CR>", {noremap=true, sile
 vim.api.nvim_set_keymap('n', '<leader>T', ':terminal<CR>', {noremap = true})
 
 
+-- init.lua or a separate Lua configuration file
+
+function wrap_selected_text(start_char, end_char)
+    local start_pos = vim.fn.getpos("'<")
+    local end_pos = vim.fn.getpos("'>")
+
+    -- Get the selected text
+    local lines = vim.fn.getline(start_pos[2], end_pos[2])
+    if #lines == 0 then return end
+
+    -- Adjust the start and end positions for multiline selections
+    lines[1] = string.sub(lines[1], start_pos[3])
+    lines[#lines] = string.sub(lines[#lines], 1, end_pos[3])
+
+    -- Join the lines and wrap them
+    local selected_text = table.concat(lines, "\n")
+    local wrapped_text = start_char .. selected_text .. end_char
+
+    -- Replace the selected text with the wrapped text
+    vim.fn.setreg('"', wrapped_text)
+    vim.cmd('normal! gv""P')
+end
+
+-- Set key mappings in visual mode
+vim.api.nvim_set_keymap('v', '{', ':lua wrap_selected_text("{", "}")<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '(', ':lua wrap_selected_text("(", ")")<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '[', ':lua wrap_selected_text("[", "]")<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '"', ':lua wrap_selected_text(\'"\', \'"\')<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', "'", ':lua wrap_selected_text("\'", "\'")<CR>', { noremap = true, silent = true })
